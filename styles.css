@@ -68,6 +68,10 @@ a {
   transition: 0.3s;
 }
 
+marquee {
+  font-size: 18px;
+}
+
 html,
 body {
   scroll-behavior: smooth;
@@ -78,7 +82,7 @@ body {
 }
 
 .header {
-  background-image: url("assets/header-bg.jpg");
+  background-image: url("assets/header-bg.png");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -102,7 +106,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ff8800;
+  background-color: #ed1b26;
 }
 
 .nav__logo img {
@@ -130,8 +134,8 @@ nav {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 2rem;
-  background-color:#ff8800;
+  gap: 1rem;
+  background-color:#ed1b26;
   transition: 0.5s;
   z-index: -1;
   transform: translateY(-100%);
@@ -167,18 +171,18 @@ nav {
 .header__image img {
   max-width: 200px;
   margin-inline: auto;
-  margin-top: 50px;
+  margin-top: 5px;
 }
 
 .header__content h2 {
   max-width: 400px;
-  background-color: #ff8800;
+  background-color: #ed1b26;
   margin-inline: auto;
   margin-bottom: 0rem;
   padding: rem 1rem;
   font-size: 2.5rem;
   font-family: "Noto Kufi Arabic", sans-serif;
-  border: 2px dashed rgb(112, 37, 2);
+  border: 2px dashed rgb(255, 255, 255);
   text-align: center;
   border-radius: 30px;
   justify-self: center;
@@ -191,13 +195,13 @@ nav {
   font-size: 3rem;
   font-weight: 400;
   font-family: "Noto Kufi Arabic", sans-serif;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   text-align: center;
   justify-self: center;
 }
 
 .header__content h1 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 500;
   font-family: "Noto Kufi Arabic", sans-serif;
   line-height: 3.5rem;
@@ -209,6 +213,9 @@ nav {
   font-size: 3rem;
 }
 
+.header__content  span {
+  color: #df1c1c;
+}
 
 
 
@@ -720,15 +727,15 @@ nav {
 }
 
 .journey__card:nth-child(1) {
-  background-image: url("assets/banner-1.jpg");
+  background-image: url("assets/ofer.png");
 }
 
 .journey__card:nth-child(2) {
-  background-image: url("assets/banner-1.jpg");
+  background-image: url("assets/ofer.png");
 }
 
 .journey__card:nth-child(3) {
-  background-image: url("assets/banner-1.jpg");
+  background-image: url("assets/ofer.png");
 }
 .journey__card__bg h4 {
   font-size: 2.4rem;
