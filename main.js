@@ -19,8 +19,8 @@ fetch('Data_Home_Page.json')
     document.getElementById('event_content').textContent = data.event_content;
     document.getElementById('about').textContent = data.about;
     document.getElementById('address').textContent = data.address;
-    document.getElementById('gmail').textContent = data.gmail;
-    document.getElementById('mobile_phone').textContent = data.mobile_phone;
+    document.getElementById('mobile_phone_1').textContent = data.mobile_phone_1;
+    document.getElementById('mobile_phone_2').textContent = data.mobile_phone_2;
   });
 
 
