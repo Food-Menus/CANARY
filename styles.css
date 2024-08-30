@@ -359,7 +359,7 @@ nav {
 }
 
 .footer__content {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: grid;
   gap: 2rem;
 }
@@ -389,7 +389,6 @@ nav {
 }
 
 .footer__socials {
-  margin-top: 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -405,7 +404,9 @@ nav {
 }
 
 .footer__bar {
-  padding: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
   font-size: 0.9rem;
   color: var(--white);
   text-align: center;
