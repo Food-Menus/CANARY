@@ -29,6 +29,7 @@
             <i class="ri-menu-line"></i>
           </div>
         </div>
+        
         <ul class="nav__links" id="nav-links">
           <li><a href="#home">القائمة الرئيسية</a></li>
           <li><a href="#special">عروض خاصه</a></li>
@@ -46,7 +47,7 @@
 
 
         <div class="header__content">
-          <marquee direction="right" class="marquee"> <p id="moving_line"> </p> </marquee>
+          <marquee direction="right" class="marquee" id="marquee">  </marquee>
           <br>
           <h2 ><a href="menu.html"> قائمة الطعام </a></h2>
           <br>
@@ -59,43 +60,11 @@
       </div>
     </header>
 
-    <section class="section__container journey__container" id="special">
-      <h2 class="section__header" id="offer_title_1"></h2>
-      <p class="section__description" id="offer_title_2">
-      </p>
+    <h2 class="section__header" >عروض حصرية</h2>
+    <p class="section__description" >استمتع باقوى العروض اللي متتفوتش</p>
 
-      <div class="journey__grid">
-        <div class="journey__card">
-          <div class="journey__card__bg">
-            <h4>عرض</h4>
-            <h4 id="offer_1"></h4>
-          </div>
-          <div class="journey__card__content">
-            <p id="offer_content_1">
-            </p>
-          </div>
-        </div>
-        <div class="journey__card">
-          <div class="journey__card__bg">
-            <h4>عرض</h4>
-            <h4 id="offer_2">  </h4>
-          </div>
-          <div class="journey__card__content">
-            <p id="offer_content_2">
-            </p>
-          </div>
-        </div>
-        <div class="journey__card">
-          <div class="journey__card__bg">
-            <h4>عرض</h4>
-            <h4 id="offer_3">  </h4>
-          </div>
-          <div class="journey__card__content">
-            <p id="offer_content_3">
-            </p>
-          </div>
-        </div>
-      </div>
+    <section class="journey__grid" id="offers-container">
+      <!-- سيتم إضافة العروض هنا -->
     </section>
 
     <section class="section__container event__container" id="event">
@@ -104,9 +73,9 @@
           <img src="assets/event.png" alt="event" />
         </div>
         <div class="event__details">
-          <h3 id="event_title_1"></h3>
-          <h2 class="section__header" id="event_title_2"></h2>
-          <p class="section__description" id="event_content"></p>
+          <h3 id="event-title" ></h3>
+          <h2 class="section__header" id="event-date"></h2>
+          <p class="section__description" id="event-description"></p>
         </div>
 
       </div>
@@ -148,12 +117,71 @@
       </div>
     </footer>
 
+    <script>
+        const sheetID = '10QjIBcqruyffFdUhzsO_j_DGYq8bsN9eL0xVycAWZQM';
+        const base = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
 
+        async function fetchOffers() {
+            const response = await fetch(base);
+            const data = await response.text();
+            const json = JSON.parse(data.substring(47).slice(0, -2));
+            const offersContainer = document.getElementById('offers-container');
+            offersContainer.innerHTML = '';
+
+            json.table.rows.forEach((row, index) => {
+                const offerName = row.c[0] ? row.c[0].v : 'غير متوفر';
+                const offerDetails = row.c[1] ? row.c[1].v : 'غير متوفر';
+
+                // إنشاء بطاقة العرض
+                offersContainer.innerHTML += `
+                    <div class="journey__card" onclick="toggleDetails(this)">
+                        <div class="journey__card__bg">
+                            <h4>${offerName}</h4>
+                        </div>
+                        <div class="journey__card__content" style="display: none;">
+                            <h4>تفاصيل العرض:</h4>
+                            <p>${offerDetails}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleDetails(card) {
+            const content = card.querySelector('.journey__card__content');
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+        }
+
+        fetchOffers(); // استدعاء الدالة لتحميل البيانات
+    </script>
+
+    <script>
+      const base2 = `https://docs.google.com/spreadsheets/d/1BUqZE3-dWtFJ5RqBqZpUQdv3M_k8igwdjje_sxNQXA4/gviz/tq?tqx=out:json`;
+
+      async function fetchDetails() {
+          const response = await fetch(base2);
+          const data = await response.text();
+          const json = JSON.parse(data.substring(47).slice(0, -2));
+
+          // استدعاء البيانات من الصفوف
+          const details = json.table.rows.map(row => row.c[0] ? row.c[0].v : 'غير متوفر');
+
+          // وضع القيم في العناصر المناسبة
+          document.getElementById('event-title').innerText = details[0]; // الحدث الكبير
+          document.getElementById('event-date').innerText = details[1]; // في الفترة القادمة
+          document.getElementById('event-description').innerText = details[2]; // تفاصيل الحدث
+          document.getElementById('about').innerText = details[3]; // رسالة الترحيب
+          document.getElementById('address').innerText = details[4]; // عنوان المطعم
+          document.getElementById('mobile_phone_1').innerText = details[5]; // أرقام الهاتف
+          document.getElementById('mobile_phone_2').innerText = details[6] || ''; // معلومات إضافية (إذا كانت موجودة)
+          document.getElementById('marquee').innerText = details[7]; // الحدث الكبير
+        }
+
+      fetchDetails(); // استدعاء الدالة لتحميل البيانات
+    </script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="main.js"></script>
     <script src="Data_Home_Page.json"></script>
 
   </body>
 </html>
-
-
